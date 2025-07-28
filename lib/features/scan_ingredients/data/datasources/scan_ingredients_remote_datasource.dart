@@ -124,6 +124,7 @@ class ScanIngredientsRemoteDatasourceImpl
        headers: await ApiClient.getHeaders(),
       parser: (json) {
         final list = (json['data'] as List);
+        print('🔥🔥🙌🏻🙌🏻 Data  => ${list}');
         return list.map((item) => HistoryScanIngredientsModel.fromJson(item)).toList();
       },
     );

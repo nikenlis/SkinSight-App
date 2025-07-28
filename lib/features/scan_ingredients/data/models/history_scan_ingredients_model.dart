@@ -18,7 +18,7 @@ class HistoryScanIngredientsModel extends HistoryScanIngredientEntity {
       id: json['id'],
       productName: json['productName'],
       scanImage: json['scanImage'],
-      isSafe: json['isSafe'] == 1,
+      isSafe: json['isSafe'],
       totalHarmfulIngredients: json['totalHarmfulIngredients'],
       createdAt: DateTime.parse(json['createdAt']),
     );

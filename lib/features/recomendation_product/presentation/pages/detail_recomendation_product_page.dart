@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeletonizer/skeletonizer.dart';
+import 'package:skinsight/core/common/app_route.dart';
+import 'package:skinsight/features/bottom_navigation_bar/bottom_navigation_bar_cubit.dart';
 import 'package:skinsight/features/product/domain/entities/product_entity.dart';
 import 'package:skinsight/features/recomendation_product/presentation/bloc/recomendation_product_bloc.dart';
 
@@ -35,10 +37,10 @@ class _RecomendationProductPageState extends State<RecomendationProductPage> {
       canPop: true,
       onPopInvokedWithResult: (bool didPop, dynamic) async {
         if (didPop) {
-          Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(builder: (_) => const HomePage()),
-            (route) => false,
-          );
+           context.read<BottomNavigationBarCubit>().change(0);
+                Navigator.pushNamedAndRemoveUntil(
+                    context, AppRoute.bottomNavBar, (route) => false);
+
         }
       },
       child: Scaffold(

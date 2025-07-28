@@ -104,79 +104,137 @@ class HistoryScanIngredientsItem extends StatelessWidget {
                         SizedBox(
                           height: 12,
                         ),
+
+                        isLoading
+    ? Container(
+        width: 50,
+        height: 20,
+        color: Colors.amber,
+      )
+    : data.isSafe
+        ? Container(
+            width: 75,
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              color: const Color.fromARGB(255, 223, 227, 198),
+              border: Border.all(color: mainColor),
+            ),
+            child: Center(
+              child: Text(
+                'Safe',
+                style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                    color: mainColor),
+              ),
+            ),
+          )
+        : Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Total harmful ingredient : ${data.totalHarmfulIngredients}',
+                style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                    fontSize: 10,
+                    fontWeight: medium,
+                    color: kSecondaryTextColor),
+              ),
+              const SizedBox(height: 8),
+              Container(
+                width: 75,
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  color: Colors.red.shade50,
+                  border: Border.all(color: Colors.red),
+                ),
+                child: Center(
+                  child: Text(
+                    'Harmful',
+                    style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                        fontSize: 10,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.red),
+                  ),
+                ),
+              )
+            ],
+          )
+
                         
-                        data.isSafe
-                            ? isLoading
-                    ? Container(
-                        width: 50,
-                        height: 20,
-                        color: Colors.amber,
-                      ): Container(
-                        width: 75,
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 8, vertical: 4),
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8),
-                                    color: const Color.fromARGB(
-                                        255, 223, 227, 198),
-                                    border: Border.all(color: mainColor)),
-                                child: Center(
-                                  child: Text(
-                                    'Safe',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .labelLarge
-                                        ?.copyWith(
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.bold,
-                                            color: mainColor),
-                                  ),
-                                ),
-                              )
-                            : Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Total harmful ingredient : ${data.totalHarmfulIngredients}',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .labelLarge
-                                        ?.copyWith(
-                                            fontSize: 10,
-                                            fontWeight: medium,
-                                            color: kSecondaryTextColor),
-                                  ),
-                                  SizedBox(
-                                    height: 8,
-                                  ), isLoading
-                    ? Container(
-                        width: 50,
-                        height: 20,
-                        color: Colors.amber,
-                      ):
-                                  Container(
-                                    width: 75,
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: 12, vertical: 4),
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(8),
-                                        color: Colors.red.shade50,
-                                        border: Border.all(color: Colors.red)),
-                                    child: Center(
-                                      child: Text(
-                                        'Harmfull',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .labelLarge
-                                            ?.copyWith(
-                                                fontSize: 10,
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.red),
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              )
+                    //     data.isSafe
+                    //         ? isLoading
+                    // ? Container(
+                    //     width: 50,
+                    //     height: 20,
+                    //     color: Colors.amber,
+                    //   ): Container(
+                    //     width: 75,
+                    //             padding: EdgeInsets.symmetric(
+                    //                 horizontal: 8, vertical: 4),
+                    //             decoration: BoxDecoration(
+                    //                 borderRadius: BorderRadius.circular(8),
+                    //                 color: const Color.fromARGB(
+                    //                     255, 223, 227, 198),
+                    //                 border: Border.all(color: mainColor)),
+                    //             child: Center(
+                    //               child: Text(
+                    //                 'Safe',
+                    //                 style: Theme.of(context)
+                    //                     .textTheme
+                    //                     .labelLarge
+                    //                     ?.copyWith(
+                    //                         fontSize: 12,
+                    //                         fontWeight: FontWeight.bold,
+                    //                         color: mainColor),
+                    //               ),
+                    //             ),
+                    //           )
+                    //         : Column(
+                    //             crossAxisAlignment: CrossAxisAlignment.start,
+                    //             children: [
+                    //               Text(
+                    //                 'Total harmful ingredient : ${data.totalHarmfulIngredients}',
+                    //                 style: Theme.of(context)
+                    //                     .textTheme
+                    //                     .labelLarge
+                    //                     ?.copyWith(
+                    //                         fontSize: 10,
+                    //                         fontWeight: medium,
+                    //                         color: kSecondaryTextColor),
+                    //               ),
+                    //               SizedBox(
+                    //                 height: 8,
+                    //               ), isLoading
+                    // ? Container(
+                    //     width: 50,
+                    //     height: 20,
+                    //     color: Colors.amber,
+                    //   ):
+                    //               Container(
+                    //                 width: 75,
+                    //                 padding: EdgeInsets.symmetric(
+                    //                     horizontal: 12, vertical: 4),
+                    //                 decoration: BoxDecoration(
+                    //                     borderRadius: BorderRadius.circular(8),
+                    //                     color: Colors.red.shade50,
+                    //                     border: Border.all(color: Colors.red)),
+                    //                 child: Center(
+                    //                   child: Text(
+                    //                     'Harmfull',
+                    //                     style: Theme.of(context)
+                    //                         .textTheme
+                    //                         .labelLarge
+                    //                         ?.copyWith(
+                    //                             fontSize: 10,
+                    //                             fontWeight: FontWeight.bold,
+                    //                             color: Colors.red),
+                    //                   ),
+                    //                 ),
+                    //               )
+                    //             ],
+                    //           )
                       ],
                     ),
                   ),
